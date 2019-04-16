@@ -124,7 +124,7 @@ public:
     ) {
         // off-bounds -> false
         if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) {
-            
+            return false;
         }
 
         // reorientar

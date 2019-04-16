@@ -139,6 +139,7 @@ public:
 
         bool destinoOcupado = tabuleiro[linhaDestino][colunaDestino].peca != nullptr;
 
+        if (destinoOcupado && tabuleiro[linhaDestino][colunaDestino].peca.branco == this.branco) return false;
 
         //TODO MAPA K NESSES IF-ELSE
 

@@ -1,5 +1,8 @@
+#include "Tabuleiro.h"
+
 class Peao {
 public:
+    Tabuleiro tabuleiro;
     bool branco;
     bool capturada;
     

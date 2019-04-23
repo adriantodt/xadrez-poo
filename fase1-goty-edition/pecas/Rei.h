@@ -1,5 +1,8 @@
+#include "Tabuleiro.h"
+
 class Rei {
 public:
+    Tabuleiro tabuleiro;
     bool branco;
     bool capturada;
     

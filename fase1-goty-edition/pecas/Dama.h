@@ -1,5 +1,8 @@
+#include "Tabuleiro.h"
+
 class Dama {
 public:
+    Tabuleiro tabuleiro;
     bool branco;
     bool capturada;
     

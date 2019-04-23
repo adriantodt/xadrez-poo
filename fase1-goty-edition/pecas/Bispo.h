@@ -1,5 +1,8 @@
+#include "Tabuleiro.h"
+
 class Bispo {
 public:
+    Tabuleiro tabuleiro;
     bool branco;
     bool capturada;
     

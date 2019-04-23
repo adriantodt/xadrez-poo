@@ -4,6 +4,11 @@
 
 using namespace std;
 
+Peao::Peao(Tabuleiro _tabuleiro, bool _branco) {
+    tabuleiro = _tabuleiro;
+    branco = _branco;
+}
+
 void Peao::desenha() {
     cout << branco ? "P" : "p";
 }

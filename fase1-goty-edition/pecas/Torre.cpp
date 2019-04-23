@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Torre::Torre(Tabuleiro _tabuleiro, bool _branco) {
+    tabuleiro = _tabuleiro;
+    branco = _branco;
+}
+
 void Torre::desenha() {
     cout << branco ? "T" : "t";
 }

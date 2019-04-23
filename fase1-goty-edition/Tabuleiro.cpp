@@ -11,7 +11,7 @@ void Tabuleiro::desenha() {
         cout << (char)('A' + y) << " |";
         for (int x = 0; x < 8; x++) {
             Posicao p = posicoes[x][y];
-            if (&(p.peca) != nullptr) {
+            if (p.tipo != vazio) {
                 p.peca.desenha();
             } else {
                 cout << ((x + y) % 2 == 0) ? "•" : "+";
@@ -26,7 +26,7 @@ bool Tabuleiro::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDesti
     if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) return false;
     
     Posicao p = posicoes[linhaDestino][colunaDestino];
-    if (&(p.peca) != nullptr) {
+    if (p.tipo == vazio) {
         return false;
     } else {
         return p.peca.checaMovimento(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);

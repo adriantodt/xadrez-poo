@@ -6,6 +6,8 @@ public:
     bool branco;
     bool capturada;
     
+    Peao(Tabuleiro tabuleiro, bool branco);
+
     void desenha();
     
     bool checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino);

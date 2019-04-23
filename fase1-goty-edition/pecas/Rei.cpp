@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Rei::Rei(Tabuleiro _tabuleiro, bool _branco) {
+    tabuleiro = _tabuleiro;
+    branco = _branco;
+}
+
 void Rei::desenha() {
     cout << branco ? "R" : "r";
 }

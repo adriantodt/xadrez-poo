@@ -5,6 +5,8 @@ public:
     Tabuleiro tabuleiro;
     bool branco;
     bool capturada;
+
+    Torre(Tabuleiro tabuleiro, bool branco);
     
     void desenha();
     

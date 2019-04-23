@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Dama::Dama(Tabuleiro _tabuleiro, bool _branco) {
+    tabuleiro = _tabuleiro;
+    branco = _branco;
+}
+
 void Dama::desenha() {
     cout << branco ? "D" : "d";
 }

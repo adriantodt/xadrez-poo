@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Cavalo::Cavalo(Tabuleiro _tabuleiro, bool _branco) {
+    tabuleiro = _tabuleiro;
+    branco = _branco;
+}
+
 void Cavalo::desenha() {
     cout << branco ? "C" : "c";
 }

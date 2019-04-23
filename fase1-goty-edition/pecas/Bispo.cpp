@@ -3,6 +3,11 @@
 
 using namespace std;
 
+Bispo::Bispo(Tabuleiro _tabuleiro, bool _branco) {
+    tabuleiro = _tabuleiro;
+    branco = _branco;
+}
+
 void Bispo::desenha() {
     cout << branco ? "B" : "b";
 }

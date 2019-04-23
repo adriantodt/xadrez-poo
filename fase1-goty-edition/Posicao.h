@@ -1,4 +1,3 @@
-#include "TipoPeca.h"
 #include "Peca.h"
 
 class Posicao {

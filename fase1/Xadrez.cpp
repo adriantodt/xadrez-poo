@@ -10,7 +10,7 @@ class Jogador {
 
 enum TipoPeca {
     vazio, rei, dama, cavalo, bispo, torre, peao
-}
+};
 
 class Peca {
 public:

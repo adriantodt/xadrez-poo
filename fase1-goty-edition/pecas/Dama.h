@@ -1,4 +1,4 @@
-#include "Tabuleiro.h"
+#include "../Tabuleiro.h"
 
 class Dama {
 public:

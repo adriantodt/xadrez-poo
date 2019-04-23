@@ -1,8 +1,12 @@
+#pragma once
+
 #include "Posicao.h"
 
 class Tabuleiro {
 public:
     Posicao posicoes[8][8];
+
+    Tabuleiro();
 
     void desenha();
     

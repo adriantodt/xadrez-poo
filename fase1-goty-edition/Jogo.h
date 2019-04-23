@@ -1,3 +1,5 @@
+#pragma once
+
 enum Estado {
     inicio,
     em_jogo,

@@ -1,8 +1,17 @@
 #include <iostream>
 #include "Tabuleiro.h"
-#include "Posicao.h"
 
 using namespace std;
+
+Tabuleiro::Tabuleiro() {
+    for (int i = 0; i < 8; i++) {
+        for(int j = 0; j < 8; j++) {
+            Posicao p = posicoes[i][j];
+            p.linha = (char)('A' + i);
+            p.coluna = j + 1;
+        }
+    }
+}
 
 void Tabuleiro::desenha() {
     cout << "  |1 2 3 4 5 6 7 8" << endl << "--+---------------" << endl;
@@ -14,7 +23,7 @@ void Tabuleiro::desenha() {
             if (p.tipo != vazio) {
                 p.peca.desenha();
             } else {
-                cout << ((x + y) % 2 == 0) ? "•" : "+";
+                cout << (((x + y) % 2 == 0) ? "•" : "+");
             }
             cout << " ";
         }

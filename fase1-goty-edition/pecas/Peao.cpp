@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Peao.h"
-#include "Tabuleiro.h"
 
 using namespace std;
 
@@ -27,7 +26,7 @@ bool Peao::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, i
     int offsetLinha = moveLinhaDestino - moveLinhaOrigem;
     int offsetColuna = moveColunaOrigem - moveColunaDestino;
 
-    bool destinoOcupado = tabuleiro.posicoes[linhaDestino][i].tipo != vazio;
+    bool destinoOcupado = tabuleiro.posicoes[linhaDestino][colunaDestino].tipo != vazio;
 
     if (destinoOcupado && tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco == branco) return false;
 

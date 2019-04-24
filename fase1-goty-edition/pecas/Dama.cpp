@@ -24,11 +24,14 @@ bool Dama::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, i
     int l = sgn(offsetLinha);
     int c = sgn(offsetColuna);
 
+    // validação de movimento (or entre bispo e torre)
     if ((offsetColuna != 0 && offsetLinha != 0 && abs(offsetLinha) == abs(offsetColuna)) || ((offsetColuna == 0) != (offsetLinha == 0))) {
+        // checagem do caminho
         for (int i = linhaOrigem + l, j = colunaOrigem + c; i != linhaDestino && j != colunaDestino; i += l, j += c) {
             if (tabuleiro.posicoes[i][j].tipo != vazio) return false;
         }
         
+        //checagem do destino
         return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
     }
 

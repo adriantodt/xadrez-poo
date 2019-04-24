@@ -1,18 +1,38 @@
-#include <iostream>
+/**
+ * Nome do Arquivo: Main.cpp
+ * 
+ * Autores:
+ *  - Adrian Todt Monteiro da Silva     759458
+ *  - Diego Tupinambá                   760922
+ *  - Victor Mendes                     756206
+ * 
+ * Turma: POO 2019/1
+ * 
+ * Descrição:
+ *     Faz testes em todos os métodos
+ *     do programa e imprime os resultados
+ * 
+ * Data de Conclusão: 24 de abril de 2019
+ */
 
-#include "../Jogo.h"
-#include "../pecas/Bispo.h"
-#include "../pecas/Cavalo.h"
-#include "../pecas/Dama.h"
-#include "../pecas/Rei.h"
-#include "../pecas/Torre.h"
-#include "../pecas/Peao.h"
+#include <iostream>
+#include "Jogo.h"
+#include "pecas/Bispo.h"
+#include "pecas/Cavalo.h"
+#include "pecas/Dama.h"
+#include "pecas/Rei.h"
+#include "pecas/Torre.h"
+#include "pecas/Peao.h"
 
 using namespace std;
 
+/**
+ * Início do programa.
+ */
 int main() {
     Jogo jogo;
 
+    cout << "tabuleiro:" << endl;
     jogo.tabuleiro.desenha();
 
     cout << endl;

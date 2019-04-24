@@ -20,9 +20,11 @@ bool Cavalo::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino,
     int absOffsetLinha = abs(linhaDestino - linhaOrigem);
     int absOffsetColuna = abs(colunaOrigem - colunaDestino);
 
+    // validação de movimento
     if ((absOffsetColuna == 2 && absOffsetLinha == 1) || (absOffsetLinha == 2 && absOffsetColuna == 1)) {
+        //checagem do destino
         return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
-    } else {
-        return false;
     }
+    
+    return false;
 }

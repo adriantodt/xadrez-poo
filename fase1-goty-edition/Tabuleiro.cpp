@@ -3,6 +3,9 @@
 
 using namespace std;
 
+/**
+ * Constrói um tabuleiro vazio.
+ */
 Tabuleiro::Tabuleiro() {
     for (int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
@@ -13,6 +16,9 @@ Tabuleiro::Tabuleiro() {
     }
 }
 
+/**
+ * Desenha o estado atual do tabuleiro.
+ */
 void Tabuleiro::desenha() {
     cout << "  |1 2 3 4 5 6 7 8" << endl << "--+---------------" << endl;
 
@@ -31,13 +37,15 @@ void Tabuleiro::desenha() {
     }
 }
 
+/**
+ * Checa a movimentação de uma peça do tabuleiro,
+ * retornando verdadeiro se a movimentação é válida.
+ */
 bool Tabuleiro::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
     if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) return false;
     
     Posicao p = posicoes[linhaDestino][colunaDestino];
-    if (p.tipo == vazio) {
-        return false;
-    } else {
-        return p.peca.checaMovimento(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
-    }
+    if (p.tipo == vazio) return false;
+    
+    return p.peca.checaMovimento(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
 }

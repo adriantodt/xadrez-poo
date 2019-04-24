@@ -2,6 +2,9 @@
 
 #include "Tabuleiro.h"
 
+/**
+ * Representa os estados do jogo.
+ */
 enum Estado {
     inicio,
     em_jogo,
@@ -10,6 +13,9 @@ enum Estado {
     afogamento
 };
 
+/**
+ * Classe principal do jogo, que representa uma partida de xadrez.
+ */
 class Jogo {
 public:
     Tabuleiro tabuleiro;

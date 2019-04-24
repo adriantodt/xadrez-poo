@@ -16,9 +16,11 @@ bool Rei::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, in
     // off-bounds -> false
     if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) return false;
 
+    // offset de movimentação
     int offL = linhaDestino - linhaOrigem;
     int offC = colunaDestino - colunaOrigem;
 
+    // checagem de movimento e destino
     return ((offL != 0 || offC != 0) && (abs(offL <= 1) && abs(offC <= 1)))
         && (tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco);
 }

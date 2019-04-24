@@ -2,10 +2,16 @@
 
 using namespace std;
 
+/**
+ * Constrói um vetor vazio.
+ */
 template <class T> Vetor<T>::Vetor() {
 	size = 0;
 }
 
+/**
+ * Insere um elemento no vetor.
+ */
 template <class T> bool Vetor<T>::insert(T element) {
 	if (size >= 100) return false;
 
@@ -14,6 +20,9 @@ template <class T> bool Vetor<T>::insert(T element) {
 	return true;
 }
 	
+/**
+ * Remove um elemnto do vetor.
+ */
 template <class T> bool Vetor<T>::remove(T element){
 	if (size < 1) return false;
 	
@@ -30,6 +39,12 @@ template <class T> bool Vetor<T>::remove(T element){
 	return false;
 }
 	
+/**
+ * Obtém um elemento do vetor a partir da posição.
+ * 
+ * Caso o elemento esteja no vetor, coloca-o no ponteiro definido e retorna verdadeiro.
+ * Caso contrário, retorna falso.
+ */
 template <class T> bool Vetor<T>::get(int at, T *to) {
 	if (at < 1) return false;
 	if (size < at) return false;

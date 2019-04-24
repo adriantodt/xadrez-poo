@@ -28,9 +28,8 @@ bool Peao::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, i
 
     bool destinoOcupado = tabuleiro.posicoes[linhaDestino][colunaDestino].tipo != vazio;
 
+    // se destino ocupado
     if (destinoOcupado && tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco == branco) return false;
-
-    //TODO MAPA K NESSES IF-ELSE
 
     // andar 2 casas no começo
     if (moveLinhaOrigem == 1 && moveLinhaDestino == 3 && offsetColuna == 0 && !destinoOcupado) return true;

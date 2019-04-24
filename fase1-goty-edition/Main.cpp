@@ -32,6 +32,7 @@ using namespace std;
 int main() {
     Jogo jogo;
 
+    // imprime um tabuleiro vazio
     cout << "tabuleiro:" << endl;
     jogo.tabuleiro.desenha();
 
@@ -44,16 +45,14 @@ int main() {
     Torre t(jogo.tabuleiro, false);
     Peao p(jogo.tabuleiro, false);
 
+    // testa a impressão das peças
     cout << "peças pretas: ";
-
     r.desenha();
     b.desenha();
     c.desenha();
     d.desenha();
     t.desenha();
     p.desenha();
-
-    cout << endl << "peças brancas: ";
 
     r.branco = true;
     b.branco = true;
@@ -62,6 +61,7 @@ int main() {
     t.branco = true;
     p.branco = true;
 
+    cout << endl << "peças brancas: ";
     r.desenha();
     b.desenha();
     c.desenha();
@@ -69,6 +69,7 @@ int main() {
     t.desenha();
     p.desenha();
 
+    // testa a checagem de validação das peças
     cout << endl << endl << "rei:" << endl;
     cout << (r.checaMovimento(1,1,2,2) ? "movimento válido" : "movimento inválido") << endl;
     cout << (r.checaMovimento(1,1,3,3) ? "movimento válido" : "movimento inválido") << endl;

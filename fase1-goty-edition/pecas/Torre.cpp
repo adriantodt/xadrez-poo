@@ -1,18 +1,32 @@
-#include <iostream>
+
+/**
+ * Checa a movimentação da torre pelo tabuleiro,
+ * retornando verdadeiro se a movimentação é válida.
+ */#include <iostream>
 #include "Torre.h"
 #include "../lib/mathutils.h"
 
 using namespace std;
 
+/**
+ * Constrói uma torre com base no tabuleiro e na cor.
+ */
 Torre::Torre(Tabuleiro _tabuleiro, bool _branco) {
     tabuleiro = _tabuleiro;
     branco = _branco;
 }
 
+/**
+ * Desenha a torre.
+ */
 void Torre::desenha() {
     cout << (branco ? "T" : "t");
 }
 
+/**
+ * Checa a movimentação da torre pelo tabuleiro,
+ * retornando verdadeiro se a movimentação é válida.
+ */
 bool Torre::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
     // off-bounds -> false
     if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) return false;

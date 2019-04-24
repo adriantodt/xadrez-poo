@@ -3,15 +3,25 @@
 
 using namespace std;
 
+/**
+ * Constrói um peão com base no tabuleiro e na cor.
+ */
 Peao::Peao(Tabuleiro _tabuleiro, bool _branco) {
     tabuleiro = _tabuleiro;
     branco = _branco;
 }
 
+/**
+ * Desenha o peão.
+ */
 void Peao::desenha() {
     cout << (branco ? "P" : "p");
 }
 
+/**
+ * Checa a movimentação do peão pelo tabuleiro,
+ * retornando verdadeiro se a movimentação é válida.
+ */
 bool Peao::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
     // off-bounds -> false
     if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) return false;

@@ -3,15 +3,25 @@
 
 using namespace std;
 
+/**
+ * Representa uma peça do tipo cavalo.
+ */
 Cavalo::Cavalo(Tabuleiro _tabuleiro, bool _branco) {
     tabuleiro = _tabuleiro;
     branco = _branco;
 }
 
+/**
+ * Desenha o cavalo.
+ */
 void Cavalo::desenha() {
     cout << (branco ? "C" : "c");
 }
 
+/**
+ * Checa a movimentação do cavalo pelo tabuleiro,
+ * retornando verdadeiro se a movimentação é válida.
+ */
 bool Cavalo::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
     // off-bounds -> false
     if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) return false;

@@ -4,15 +4,25 @@
 
 using namespace std;
 
+/**
+ * Constrói uma dama com base no tabuleiro e na cor.
+ */
 Dama::Dama(Tabuleiro _tabuleiro, bool _branco) {
     tabuleiro = _tabuleiro;
     branco = _branco;
 }
 
+/**
+ * Desenha a dama.
+ */
 void Dama::desenha() {
     cout << (branco ? "D" : "d");
 }
 
+/**
+ * Checa a movimentação da dama pelo tabuleiro,
+ * retornando verdadeiro se a movimentação é válida.
+ */
 bool Dama::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
     // off-bounds -> false
     if (linhaDestino < 0 || colunaDestino < 0 || linhaDestino > 7 || colunaDestino > 7) return false;

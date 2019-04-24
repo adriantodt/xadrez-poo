@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../Tabuleiro.h"
 
 class Peao {

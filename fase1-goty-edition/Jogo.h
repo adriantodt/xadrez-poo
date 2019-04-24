@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Tabuleiro.h"
+
 enum Estado {
     inicio,
     em_jogo,
@@ -9,4 +11,6 @@ enum Estado {
 };
 
 class Jogo {
+public:
+    Tabuleiro tabuleiro;
 };

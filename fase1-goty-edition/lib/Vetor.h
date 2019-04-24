@@ -8,7 +8,7 @@ private:
 public:
 	Vetor();
 
-	bool set(T element);
+	bool insert(T element);
 
 	bool remove(T element);
 

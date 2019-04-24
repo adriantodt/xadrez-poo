@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Torre.h"
+#include "../lib/mathutils.h"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ Torre::Torre(Tabuleiro _tabuleiro, bool _branco) {
 }
 
 void Torre::desenha() {
-    cout << branco ? "T" : "t";
+    cout << (branco ? "T" : "t");
 }
 
 bool Torre::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
@@ -20,25 +21,16 @@ bool Torre::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, 
     int offsetLinha = linhaDestino - linhaOrigem;
     int offsetColuna = colunaOrigem - colunaDestino;
 
-    int d;
+    int l = sgn(offsetLinha);
+    int c = sgn(offsetColuna);
 
-    if (offsetColuna == 0 && offsetLinha != 0) {
-        d = offsetLinha / abs(offsetLinha);
-
-        for(int i = linhaOrigem + d; i != linhaDestino; i += d) {
-            if (tabuleiro.posicoes[i][colunaDestino].tipo != vazio) return false;
+    if ((offsetColuna == 0) != (offsetLinha == 0)) {
+        for (int i = linhaOrigem + l, j = colunaOrigem + c; i != linhaDestino && j != colunaDestino; i += l, j += c) {
+            if (tabuleiro.posicoes[i][j].tipo != vazio) return false;
         }
         
         return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
-    } else if (offsetColuna != 0 && offsetLinha == 0) {
-        d = offsetColuna / abs(offsetColuna);
-
-        for(int i = colunaOrigem + d; i != colunaDestino; i += d) {
-            if (tabuleiro.posicoes[linhaDestino][i].tipo != vazio) return false;
-        }
-        
-        return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
-    } else {
-        return false;
     }
+
+    return false;
 }

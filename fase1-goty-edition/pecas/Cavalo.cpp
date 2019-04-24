@@ -9,7 +9,7 @@ Cavalo::Cavalo(Tabuleiro _tabuleiro, bool _branco) {
 }
 
 void Cavalo::desenha() {
-    cout << branco ? "C" : "c";
+    cout << (branco ? "C" : "c");
 }
 
 bool Cavalo::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {

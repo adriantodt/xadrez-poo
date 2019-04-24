@@ -2,7 +2,7 @@
 
 using namespace std;
 
-template <class T> Vetor<T>::Vetor<T>() {
+template <class T> Vetor<T>::Vetor() {
 	size = 0;
 }
 

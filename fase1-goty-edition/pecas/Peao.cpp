@@ -9,7 +9,7 @@ Peao::Peao(Tabuleiro _tabuleiro, bool _branco) {
 }
 
 void Peao::desenha() {
-    cout << branco ? "P" : "p";
+    cout << (branco ? "P" : "p");
 }
 
 bool Peao::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {

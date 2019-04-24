@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Dama.h"
+#include "../lib/mathutils.h"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ Dama::Dama(Tabuleiro _tabuleiro, bool _branco) {
 }
 
 void Dama::desenha() {
-    cout << branco ? "D" : "d";
+    cout << (branco ? "D" : "d");
 }
 
 bool Dama::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
@@ -20,28 +21,16 @@ bool Dama::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, i
     int offsetLinha = linhaDestino - linhaOrigem;
     int offsetColuna = colunaOrigem - colunaDestino;
 
-    int l = offsetLinha / abs(offsetLinha);
-    int c = offsetColuna / abs(offsetColuna);
+    int l = sgn(offsetLinha);
+    int c = sgn(offsetColuna);
 
-    if (offsetColuna == 0 && offsetLinha != 0) {
-        for(int i = linhaOrigem + l; i != linhaDestino; i += l) {
-            if (tabuleiro.posicoes[i][colunaDestino].tipo != vazio) return false;
-        }
-        
-        return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
-    } else if (offsetColuna != 0 && offsetLinha == 0) {
-        for(int i = colunaOrigem + c; i != colunaDestino; i += c) {
-            if (tabuleiro.posicoes[linhaDestino][i].tipo != vazio) return false;
-        }
-        
-        return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
-    } else if (offsetColuna != 0 && offsetLinha != 0 && abs(offsetLinha) == abs(offsetColuna)) {
+    if ((offsetColuna != 0 && offsetLinha != 0 && abs(offsetLinha) == abs(offsetColuna)) || ((offsetColuna == 0) != (offsetLinha == 0))) {
         for (int i = linhaOrigem + l, j = colunaOrigem + c; i != linhaDestino && j != colunaDestino; i += l, j += c) {
             if (tabuleiro.posicoes[i][j].tipo != vazio) return false;
         }
         
         return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
-    } else {
-        return false;
     }
+
+    return false;
 }

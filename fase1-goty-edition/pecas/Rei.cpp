@@ -9,7 +9,7 @@ Rei::Rei(Tabuleiro _tabuleiro, bool _branco) {
 }
 
 void Rei::desenha() {
-    cout << branco ? "R" : "r";
+    cout << (branco ? "R" : "r");
 }
 
 bool Rei::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {

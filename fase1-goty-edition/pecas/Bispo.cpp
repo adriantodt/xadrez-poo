@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Bispo.h"
+#include "../lib/mathutils.h"
 
 using namespace std;
 
@@ -9,7 +10,7 @@ Bispo::Bispo(Tabuleiro _tabuleiro, bool _branco) {
 }
 
 void Bispo::desenha() {
-    cout << branco ? "B" : "b";
+    cout << (branco ? "B" : "b");
 }
 
 bool Bispo::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
@@ -20,8 +21,8 @@ bool Bispo::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, 
     int offsetLinha = linhaDestino - linhaOrigem;
     int offsetColuna = colunaOrigem - colunaDestino;
 
-    int l = offsetLinha / abs(offsetLinha);
-    int c = offsetColuna / abs(offsetColuna);
+    int l = sgn(offsetLinha);
+    int c = sgn(offsetColuna);
 
     if (offsetColuna != 0 && offsetLinha != 0 && abs(offsetLinha) == abs(offsetColuna)) {
         for (int i = linhaOrigem + l, j = colunaOrigem + c; i != linhaDestino && j != colunaDestino; i += l, j += c) {
@@ -29,7 +30,7 @@ bool Bispo::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, 
         }
         
         return tabuleiro.posicoes[linhaDestino][colunaDestino].tipo == vazio || tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco != branco;
-    } else {
-        return false;
     }
+
+    return false;
 }

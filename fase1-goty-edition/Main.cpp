@@ -10,7 +10,7 @@
  * 
  * Descrição:
  *     Faz testes em todos os métodos
- *     do programa e imprime os resultados
+ *     do programa e imprime os resultados.
  * 
  * Data de Conclusão: 24 de abril de 2019
  */

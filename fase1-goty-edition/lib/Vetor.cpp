@@ -21,7 +21,7 @@ template <class T> bool Vetor<T>::insert(T element) {
 }
 	
 /**
- * Remove um elemnto do vetor.
+ * Remove um elemento do vetor.
  */
 template <class T> bool Vetor<T>::remove(T element){
 	if (size < 1) return false;

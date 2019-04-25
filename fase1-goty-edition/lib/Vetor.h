@@ -18,7 +18,7 @@ public:
 	bool insert(T element);
 
 	/**
-	 * Remove um elemnto do vetor.
+	 * Remove um elemento do vetor.
 	 */
 	bool remove(T element);
 

@@ -42,13 +42,15 @@ bool Peao::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, i
     if (destinoOcupado && tabuleiro.posicoes[linhaDestino][colunaDestino].peca.branco == branco) return false;
 
     // andar 2 casas no começo
-    if (moveLinhaOrigem == 1 && moveLinhaDestino == 3 && offsetColuna == 0 && !destinoOcupado) return true;
+    if (moveLinhaOrigem == 1 && moveLinhaDestino == 3 && offsetColuna == 0) {
+        return tabuleiro.posicoes[linhaDestino + (branco ? 1 : -1)][colunaDestino].tipo == vazio && !destinoOcupado;
+    }
 
     // andar 1 casa
-    if (offsetColuna == 0 && offsetLinha == 1 && !destinoOcupado) return true;
+    if (offsetColuna == 0 && offsetLinha == 1) return !destinoOcupado;
 
     // comer peça
-    if (offsetLinha == 1 && (offsetColuna == -1 || offsetColuna == 1) && destinoOcupado) return true;
+    if (offsetLinha == 1 && (offsetColuna == -1 || offsetColuna == 1)) return destinoOcupado;
 
     return false;
 }

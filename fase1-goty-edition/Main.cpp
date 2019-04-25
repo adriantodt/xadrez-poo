@@ -76,11 +76,11 @@ int main() {
 
     cout << endl << "bispo:" << endl;
     cout << (b.checaMovimento(1,1,5,5) ? "movimento válido" : "movimento inválido") << endl;
-    cout << (b.checaMovimento(1,1,1,2) ? "movimento válido" : "movimento inválido") << endl;
+    cout << (b.checaMovimento(1,1,1,5) ? "movimento válido" : "movimento inválido") << endl;
 
     cout << endl << "torre:" << endl;
-    cout << (t.checaMovimento(1,1,1,3) ? "movimento válido" : "movimento inválido") << endl;
-    cout << (t.checaMovimento(1,1,2,2) ? "movimento válido" : "movimento inválido") << endl;
+    cout << (t.checaMovimento(1,1,1,5) ? "movimento válido" : "movimento inválido") << endl;
+    cout << (t.checaMovimento(1,1,5,5) ? "movimento válido" : "movimento inválido") << endl;
 
     cout << endl << "cavalo:" << endl;
     cout << (c.checaMovimento(1,1,3,2) ? "movimento válido" : "movimento inválido") << endl;

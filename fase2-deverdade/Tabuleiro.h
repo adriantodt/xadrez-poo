@@ -1,14 +1,15 @@
 #pragma once
 
-#include "Posição.h"
+#include "Posicao.h"
 
 /**
  *  Essa classe gerencia o tabuleiro do jogo.
  */
 class Tabuleiro {
-    Posição* posições;
-public:
+private:
+    Posicao** posicoes;
 
+public:
     /**
      * Constrói um tabuleiro vazio.
      */
@@ -25,8 +26,8 @@ public:
     void desenha();
     
     /**
-     * Checa a movimentação de uma peça do tabuleiro,
-     * retornando verdadeiro se a movimentação é válida.
+     * Checa a movimentacao de uma peça do tabuleiro,
+     * retornando verdadeiro se a movimentacao é válida.
      */
     bool checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino);
 };

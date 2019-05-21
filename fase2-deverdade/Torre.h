@@ -1,9 +1,23 @@
 #pragma once
 
-#include "Peça.h"
+#include "Peca.h"
 
 /**
  * Representa uma peça do tipo torre.
  */
-class Torre : public Peça {
-}
+class Torre : public Peca {
+public:
+    Torre(bool isBranco);
+    
+    /**
+     * Desenha a peça.
+     */
+    virtual void desenha();
+    
+    /**
+     * Checa a movimentação da peça pelo tabuleiro,
+     * retornando verdadeiro se a movimentação é válida.
+     */
+    virtual bool checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino);
+
+};

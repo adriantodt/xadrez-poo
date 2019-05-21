@@ -3,15 +3,16 @@
 /**
  * Representa uma peça do tabuleiro.
  */
-class Peça {
+class Peca {
 private:
     bool branco;
     bool capturada;
+
 public:
     /**
-     * Cria uma nova peça
+     * Cria uma nova peça.
      */
-    Peça(bool isBranco);
+    Peca(bool isBranco);
 
     /**
      * Desenha a peça.

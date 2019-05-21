@@ -3,11 +3,11 @@
 #include "Peca.h"
 
 /**
- * Representa uma peça do tipo cavalo.
+ * Representa uma peça do tipo peão.
  */
-class Cavalo : public Peca {
+class Peao : public Peca {
 public:
-    Cavalo(bool isBranco);
+    Peao(bool isBranco);
     
     /**
      * Desenha a peça.

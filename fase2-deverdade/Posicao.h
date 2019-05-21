@@ -1,20 +1,21 @@
 #pragma once
 
-#include "Peça.h"
+#include "Peca.h"
 
 /**
  * Salva o estado de uma posição do tabuleiro.
  */
-class Posição {
+class Posicao {
 private:
-    Peça* peça;
+    Peca* peca;
     char linha;
     int coluna;
+
 public:
     /**
      * Cria uma nova posição do tabuleiro.
      */
-    Posição(char linha, int coluna);
+    Posicao(char linha, int coluna);
 
     /**
      * Retorna a linha onde esta posição se encontra.
@@ -29,10 +30,10 @@ public:
     /**
      * Retorna a peça que está nesta posição.
      */
-    Peça* getPeça();
+    Peca* getPeca();
 
     /**
      * Define a peça que está nesta posição.
      */
-    void setPeça(Peça *peça);
+    void setPeca(Peca *peca);
 };

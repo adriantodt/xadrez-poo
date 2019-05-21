@@ -1,6 +1,7 @@
 #pragma once
 
 #include<string>
+#include "Peca.h"
 
 using namespace std;
 
@@ -10,13 +11,9 @@ using namespace std;
 class Jogador {
 private:
     string nome;
+    Peca** pecas;
 
 public:
-    /**
-     * Constrói um jogador com o nome em branco.
-     */
-    Jogador();
-    
     /**
      * Constrói um jogador com o nome definido.
      */
@@ -26,4 +23,6 @@ public:
      * Retorna o nome do jogador
      */
     string getNome();
+
+    void addPeça(Peca *peca);
 };

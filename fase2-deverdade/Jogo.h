@@ -5,13 +5,6 @@
 #include "Tabuleiro.h"
 #include "Jogador.h"
 
-#include "Bispo.h"
-#include "Cavalo.h"
-#include "Dama.h"
-#include "Peao.h"
-#include "Rei.h"
-#include "Torre.h"
-
 /**
  * Representa os estados do jogo.
  */
@@ -29,7 +22,7 @@ enum Estado {
 class Jogo {
 private:
     Tabuleiro* tabuleiro;
-    Peca** peças;
+    Peca** pecas;
     Jogador* jogador1;
     Jogador* jogador2;
     Estado estado;

@@ -20,9 +20,17 @@ public:
     Jogador(string nome);
 
     /**
-     * Retorna o nome do jogador
+     * Destrói o jogador.
+     */
+    ~Jogador();
+
+    /**
+     * Retorna o nome do jogador.
      */
     string getNome();
 
-    void addPeça(Peca *peca);
+    /**
+     * Põe a peça na posição definida.
+     */
+    void setPeca(int pos, Peca *_peca);
 };

@@ -1,0 +1,16 @@
+# OK -> Feito
+# WO -> Sendo feito
+# NS -> Não começamos a fazer
+
+Fase 2
+OK - Implementação completa das classes
+OK - Implementação do programa principal
+OK - Jogo funcionando
+OK - Abstrair classe Peça (métodos desenha e checaMovimento)
+OK   - Mover atributos e métodos comuns pra classe base
+OK   - Peças devem ser lidadas polimorficamente
+WO - Regras para o código em C++
+OK   - Tratamento de Exceções
+NS   - Sobrecarga do operador de atribuição
+NS   - Construtores de cópia se necessário
+OK - Serialização da partida (EM ARQUIVO)

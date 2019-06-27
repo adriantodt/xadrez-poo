@@ -23,12 +23,3 @@ void Posicao::setPeca(Peca *_peca) {
     peca = _peca;
 }
 
-std::ifstream & operator>>(std::ifstream & is, Posicao *& obj) {
-    is.read(reinterpret_cast<char*>(obj), sizeof(Posicao));
-    return is;    
-}
-
-std::ofstream & operator<<(std::ofstream & os, const Posicao *& obj) {
-    os.write(reinterpret_cast<const char*>(obj), sizeof(Posicao));
-    return os;
-}

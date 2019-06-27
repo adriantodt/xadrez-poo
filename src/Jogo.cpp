@@ -230,10 +230,10 @@ void Jogo::ui_jogando() {
 
             try {
                 if (vLen != 4) throw "Entrada Inválida: Parâmetros insuficientes.";
-                if (!isalpha(v[0])) throw "Entrada Inválida: [0] não é um caractére alfabético.";
-                if (!isdigit(v[1])) throw "Entrada Inválida: [1] não é um caractére numérico.";
-                if (!isalpha(v[2])) throw "Entrada Inválida: [2] não é um caractére alfabético.";
-                if (!isdigit(v[3])) throw "Entrada Inválida: [3] não é um caractére numérico.";
+                if (!isalpha(v[0])) throw "Entrada Inválida: [0] não é um caractere alfabético.";
+                if (!isdigit(v[1])) throw "Entrada Inválida: [1] não é um caractere numérico.";
+                if (!isalpha(v[2])) throw "Entrada Inválida: [2] não é um caractere alfabético.";
+                if (!isdigit(v[3])) throw "Entrada Inválida: [3] não é um caractere numérico.";
 
                 int xO = v[0] - 'A';
                 int yO = v[1] - '1';

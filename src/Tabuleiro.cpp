@@ -8,13 +8,25 @@
 using namespace std;
 
 Tabuleiro::Tabuleiro() {
-    posicoes = new Posicao*[64];
+    try {
+        posicoes = new Posicao*[64];
 
-    for (int c = 0; c < 8; c++) {
-        for (int l = 0; l < 8; l++) {
-            posicoes[l + c * 8] = new Posicao(l + 'A', c + 1);
+        for (int c = 0; c < 8; c++) {
+            for (int l = 0; l < 8; l++) {
+                posicoes[l + c * 8] = new Posicao(l + 'A', c + 1);
+            }
         }
     }
+    catch (const std::bad_alloc&) {
+	    if (posicoes) {
+            for (int i = 0; i < 64; i++) {
+		        if (posicoes[i]) delete posicoes[i];
+        	}
+            delete posicoes;
+    	}
+        throw "Falta de Memória.";
+    }
+
 }
 
 Tabuleiro::~Tabuleiro() {
@@ -61,7 +73,7 @@ void Tabuleiro::desenha() {
 int sgn(int v) {
     return (v > 0) ? 1 : ((v < 0) ? -1 : 0);
 }
-    
+
 bool Tabuleiro::checaMovimento(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
     Posicao* origem = getPosicao(linhaOrigem, colunaOrigem);
     Posicao* destino = getPosicao(linhaDestino, colunaDestino);
@@ -142,11 +154,6 @@ bool Tabuleiro::checaMoveXeque(int linhaOrigem, int colunaOrigem, int linhaDesti
                 && pos->getPeca()->isBranco() != branco
                 && checaMovimento(l, c, linhaRei, colunaRei)
             ) {
-                // debug
-                Posicao* posRei = getPosicao(linhaRei,colunaRei);
-                std::string tipos[] = { "bispo", "cavalo", "dama", "peao", "rei", "torre" };
-                cerr << tipos[pos->getPeca()->getTipo()] << " at " << pos->getLinha() << pos->getColuna() << " can check king at " << posRei->getLinha() << posRei->getColuna() << endl;
-
                 origem->setPeca(pecaOrigem);
                 destino->setPeca(pecaDestino);
                 return false;

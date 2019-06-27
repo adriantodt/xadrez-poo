@@ -13,32 +13,46 @@
 #include <ctype.h>
 #include <unistd.h>
 
-std::string ver = "1.0-beta3";
+std::string ver = "1.0";
 
 using namespace std;
 
 Jogo::Jogo() {
-	tabuleiro = new Tabuleiro;
 	estado = inicio;
 	jogador1 = NULL;
 	jogador2 = NULL;
-	pecas = new Peca*[32];
 
-	int i = 0;
-	for (int branco = 1; branco >= 0; branco--) {
-		pecas[i++] = new Torre(branco);
-		pecas[i++] = new Cavalo(branco);
-		pecas[i++] = new Bispo(branco);
-		pecas[i++] = new Rei(branco);
-		pecas[i++] = new Dama(branco);
-		pecas[i++] = new Bispo(branco);
-		pecas[i++] = new Cavalo(branco);
-		pecas[i++] = new Torre(branco);
+    try {
+	    tabuleiro = new Tabuleiro;
 
-		for (int j = 0; j < 8; j++) {
-			pecas[i++] = new Peao(branco);
-		}
-	}
+	    pecas = new Peca*[32];
+
+	    int i = 0;
+	    for (int branco = 1; branco >= 0; branco--) {
+		    pecas[i++] = new Torre(branco);
+		    pecas[i++] = new Cavalo(branco);
+		    pecas[i++] = new Bispo(branco);
+		    pecas[i++] = new Rei(branco);
+		    pecas[i++] = new Dama(branco);
+		    pecas[i++] = new Bispo(branco);
+		    pecas[i++] = new Cavalo(branco);
+		    pecas[i++] = new Torre(branco);
+
+		    for (int j = 0; j < 8; j++) {
+			    pecas[i++] = new Peao(branco);
+		    }
+	    }
+    }
+    catch (const std::bad_alloc&) {
+        if (tabuleiro) delete tabuleiro;
+	    if (pecas) {
+            for (int i = 0; i < 32; i++) {
+		        if (pecas[i]) delete pecas[i];
+        	}
+            delete pecas;
+    	}
+        throw "Falta de Memória.";
+    }
 }
 
 Jogo::~Jogo() {
@@ -48,11 +62,15 @@ Jogo::~Jogo() {
 	if (jogador2) {
 		delete jogador2;
 	}
-	for (int i = 0; i < 32; i++) {
-		delete pecas[i];
-	}
-
-	delete pecas;
+    if (tabuleiro) {
+        delete tabuleiro;
+    }
+    if (pecas) {
+    	for (int i = 0; i < 32; i++) {
+	    	delete pecas[i];
+	    }
+	    delete pecas;
+    }
 }
 
 void cls() {
@@ -63,7 +81,7 @@ void cls() {
 Peca* Jogo::encontrarProximaPeca(TipoPeca tipo, bool branco) {
     for (int i = 0; i < 32; i++) {
         Peca* p = pecas[i];
-        if (p->getTipo() == tipo && p->isBranco() == branco) {
+        if (p->getTipo() == tipo && p->isBranco() == branco && p->isCapturada()) {
             p->setCapturada(false);
             return p;
         }
@@ -98,18 +116,7 @@ void Jogo::ui_menuPrincipal() {
 		} else if (c == 'q') {
 			ui_sairDoJogo();
             return;
-		} else if (c == 'd') {
-            jogador1 = new Jogador("Adrian");
-            jogador2 = new Jogador("Diego");
-            int i = 0;
-            for (int x = 7; x >= 0; x--) tabuleiro->getPosicao(x, 0)->setPeca(pecas[i++]);
-            for (int x = 7; x >= 0; x--) tabuleiro->getPosicao(x, 1)->setPeca(pecas[i++]);
-            for (int x = 7; x >= 0; x--) tabuleiro->getPosicao(x, 7)->setPeca(pecas[i++]);
-            for (int x = 7; x >= 0; x--) tabuleiro->getPosicao(x, 6)->setPeca(pecas[i++]);
-            estado = em_jogo_branco;
-            ui_jogando();
-            return;
-        }
+		}
     }
 }
 
@@ -124,14 +131,33 @@ void Jogo::ui_novoJogo() {
     std::string j1;
     std::getline(cin, j1);
     cout << " │" << endl;
-    jogador1 = new Jogador(j1);
     cout << " │ Jogador 2: (Preto)" << endl;
     cout << " ├──> ";
     std::string j2;
     std::getline(cin, j2);
     cout << " │" << endl;
-    jogador2 = new Jogador(j2);
     cin.clear();
+    
+    try {
+        jogador1 = new Jogador(j1);
+        jogador2 = new Jogador(j2);
+    } catch (const std::bad_alloc&) {
+        if (jogador1) delete jogador1;
+        if (jogador2) delete jogador2;
+        if (tabuleiro) delete tabuleiro;
+	    if (pecas) {
+            for (int i = 0; i < 32; i++) {
+		        if (pecas[i]) delete pecas[i];
+        	}
+            delete pecas;
+    	}
+        throw "Falta de Memória.";
+    }
+
+    for (int i = 0; i < 16; i++) {
+        jogador1->setPeca(i, pecas[i]);
+        jogador2->setPeca(i, pecas[i + 16]);
+	}
 
     int i = 0;
     for (int x = 7; x >= 0; x--) {
@@ -155,6 +181,7 @@ void Jogo::ui_novoJogo() {
 void Jogo::ui_jogando() {
     while (true) {
 	    cls();
+		cout << endl;
 		cout << " ┌──┤ Xadrez ├─────────┐" << endl;
 		cout << " └┬────────────────────┘" << endl;
         cout << "  └> " << jogador2->getNome();
@@ -358,6 +385,7 @@ void Jogo::ui_salvarJogo() {
 void Jogo::ui_fimDoJogo() {
     while (true) {
         cls();
+		cout << endl;
 	    cout << " ┌──┤ Xadrez ├─────────┐" << endl;
 	    cout << " └┬────────────────────┘" << endl;
         cout << "  └┤ " << jogador1->getNome() << " VS " << jogador2->getNome() << endl;

@@ -17,12 +17,3 @@ void Jogador::setPeca(int pos, Peca *_peca) {
     pecas[pos] = _peca;
 }
 
-std::ifstream & operator>>(std::ifstream & is, Jogador *& obj) {
-    is.read(reinterpret_cast<char*>(obj), sizeof(Jogador));
-    return is;
-}
-
-std::ofstream & operator<<(std::ofstream & os, const Jogador *& obj) {
-    os.write(reinterpret_cast<const char*>(obj), sizeof(Jogador));
-    return os;
-}

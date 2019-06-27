@@ -1,6 +1,10 @@
 #include "Jogo.h"
 
 int main() {
-    Jogo jogo;
-    jogo.executar();
+    try {
+        Jogo jogo;
+        jogo.executar();
+    } catch (const char *ex) {
+        cout << ex << endl;
+    }
 }
